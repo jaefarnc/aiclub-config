@@ -32,7 +32,8 @@ Before Anything else, tmux and start your container. Normal Port Maps are fine.
         - PermitRootLogin yes
         - Port 2222
     4. service ssh restart
-    5. autossh test0-azvm-reverse
+    5. passwd root
+    6. autossh test0-azvm-reverse
 ## Automate Keeping tor and autossh alive
     1. cd /workspace/B220032CS_Jaefar && git clone https://github.com/jaefarnc/scraping-twitter.git
     2. cp scraping-twitter/extssh.sh ./
@@ -42,6 +43,12 @@ Before Anything else, tmux and start your container. Normal Port Maps are fine.
         - change working directory to /workspace/B220032CS_Jaefar/tor-expert-bundle/tor
         - change autossh test0-azvm to autossh test0-azvm-reverse
     6. ./extssh.sh
+    
+
+## Getting access to the ai club machine from your network
+    1. ssh test0-azvm ( ssh into your vps )
+    2. ssh -p 6000 root@localhost  
+    Voila, you're good to go.
 
 
 
