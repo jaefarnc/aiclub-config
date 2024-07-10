@@ -32,6 +32,7 @@ Before Anything else, tmux and start your container. Normal Port Maps are fine.
             - git reset --hard ${WEBTUNNEL_VERSION} && go build -ldflags="-s -w" -o /usr/local/bin/webtunnel
     5. cd $WORK_DIR_T/tor-expert-bundle/tor
     6. ./tor -f torrc
+    7. CTRL+b+d
 ## Autossh
     0. tmux
     1. apt install autossh openssh-client openssh-server netcat-openbsd
@@ -43,6 +44,7 @@ Before Anything else, tmux and start your container. Normal Port Maps are fine.
     4. service ssh restart
     5. passwd root
     6. autossh $RSHELL_HOST_CONFIG
+    7. CTRL+b+d
 ## Automate Keeping tor and autossh alive ( optional )
     0. # close tmux session 1 and tmux attach-session -t 0
     1. cd $WORK_DIR_T && git clone https://github.com/jaefarnc/scraping-twitter.git
