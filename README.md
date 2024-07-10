@@ -64,12 +64,12 @@ You need to preconfigure a vps with a static ip ( azure provides one. aws doesn'
     6. ./extssh.sh
     7. CTRL+b+d
 ## Getting access to the ai club machine from your network
-    1. ssh $STD_HOST_CONFIG ( ssh into your vps )
+    1. # inside your local machine, ssh $STD_HOST_CONFIG ( ssh into your vps )
     2. ssh -p $VPS_DOCKER_INT_PORT root@localhost  
     Voila, you're good to go.
 ## Setting up jupyter lab to proxy to your VPS's port 8000
     # Presumably you've run ( jupyter lab --no-browser --allow-root --ip=0.0.0.0 --port=8888 ) in a tmux session in the aiclub docker container
-    0. tmux
+    0. # inside vps, tmux
     1. ssh -L 8000:localhost:8888 -p $VPS_DOCKER_INT_PORT root@localhost
     2. CTRL+b+d
     3. # exit from your ssh session
