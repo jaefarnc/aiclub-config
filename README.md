@@ -18,7 +18,7 @@ You need to preconfigure a vps with a static ip ( azure provides one. aws doesn'
             ProxyCommand nc -X 5 -x 127.0.0.1:$TORRC_SOCKS_PORT %h %p
             RemoteForward $VPS_DOCKER_INT_PORT localhost:2222
         
-## Tor Setup
+## Tor Setup ( In the AI Club Machine )
     0. tmux
     1. # get the tor-expert-bundle and store it in folder $WORK_DIR, edit torrc with a webtunnel bridge
     2. apt update && sudo apt upgrade
@@ -40,7 +40,7 @@ You need to preconfigure a vps with a static ip ( azure provides one. aws doesn'
     5. cd $WORK_DIR_T/tor-expert-bundle/tor
     6. ./tor -f torrc
     7. CTRL+b+d
-## Autossh
+## Autossh ( In the AI Club Machine )
     0. tmux
     1. apt install autossh openssh-client openssh-server netcat-openbsd
     2. nano ~/.ssh/config
@@ -52,7 +52,7 @@ You need to preconfigure a vps with a static ip ( azure provides one. aws doesn'
     5. passwd root
     6. autossh $RSHELL_HOST_CONFIG
     7. CTRL+b+d
-## Automate Keeping tor and autossh alive ( optional )
+## Automate Keeping tor and autossh alive ( optional ) ( In the AI Club Machine )
     0. # close tmux session 1 and tmux attach-session -t 0
     1. cd $WORK_DIR_T && git clone https://github.com/jaefarnc/scraping-twitter.git
     2. cp scraping-twitter/extssh.sh ./
@@ -63,11 +63,11 @@ You need to preconfigure a vps with a static ip ( azure provides one. aws doesn'
         - change autossh test0-azvm to autossh $RSHELL_HOST_CONFIG
     6. ./extssh.sh
     7. CTRL+b+d
-## Getting access to the ai club machine from your network
+## Getting access to the ai club machine from your network ( Your Local Machine )
     1. # inside your local machine, ssh $STD_HOST_CONFIG ( ssh into your vps )
     2. ssh -p $VPS_DOCKER_INT_PORT root@localhost  
     Voila, you're good to go.
-## Setting up jupyter lab to proxy to your VPS's port 8000
+## Setting up jupyter lab to proxy to your VPS's port 8000 ( Your VPS and your Local Machine )
     # Presumably you've run ( jupyter lab --no-browser --allow-root --ip=0.0.0.0 --port=8888 ) in a tmux session in the aiclub docker container
     0. # inside vps, tmux
     1. ssh -L 8000:localhost:8888 -p $VPS_DOCKER_INT_PORT root@localhost
