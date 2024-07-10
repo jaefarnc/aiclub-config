@@ -76,5 +76,6 @@ You need to preconfigure a vps with a static ip ( azure provides one. aws doesn'
     4. ssh -L 8080:localhost:8000 $STD_HOST_CONFIG
     5. # Go to localhost:8080 on your machine. You should have the token from the tmux session where you started jupyter lab in the docker container in the aiclub machine
 
+Extra points to anyone who scripts this up for me
 
 
