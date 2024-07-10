@@ -3,6 +3,7 @@
 Walks through the process of setting up ssh into the AI-Club Machine from outside the d-link network  
 
 Before Anything else, tmux and start your container. Normal Port Maps are fine.  
+You need to preconfigure a vps with a static ip ( azure provides one. aws doesn't. ) or ddns with a domain with ssh allowed on $SSH_PORT .
 
     WORK_DIR_T = /workspace/B220032CS_Jaefar  
     RSHELL_HOST_CONFIG = test0-azvm-reverse 
