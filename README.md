@@ -60,7 +60,14 @@ Before Anything else, tmux and start your container. Normal Port Maps are fine.
     1. ssh $STD_HOST_CONFIG ( ssh into your vps )
     2. ssh -p 6000 root@localhost  
     Voila, you're good to go.
-
+## Setting up jupyter lab to proxy to your VPS's port 8000
+    # Presumably you've run ( jupyter lab --no-browser --allow-root --ip=0.0.0.0 --port=8888 ) in a tmux session in the aiclub docker container
+    0. tmux
+    1. ssh -L 8000:localhost:8888 -p 6000 root@localhost
+    2. CTRL+b+d
+    3. # exit from your ssh session
+    4. ssh -L 8080:localhost:8000 $STD_HOST_CONFIG
+    5. # Go to localhost:8080 on your machine. You should have the token from the tmux session where you started jupyter lab in the docker container in the aiclub machine
 
 
 
