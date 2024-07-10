@@ -10,6 +10,12 @@ Before Anything else, tmux and start your container. Normal Port Maps are fine.
     # The host configs are to be written into ~/.ssh/config
     # For example,
     Host $RSHELL_HOST_CONFIG
+            HostName $VPS_STATIC_PUBLIC_IP
+            Port $SSH_PORT
+            User jaefsha
+            IdentityFile $PATH_TO_PRIVKEY
+            ProxyCommand nc -X 5 -x 127.0.0.1:$TORRC_SOCKS_PORT %h %p
+            RemoteForward $VPS_DOCKER_INT_PORT localhost:2222
         
 ## Tor Setup
     0. tmux
@@ -58,12 +64,12 @@ Before Anything else, tmux and start your container. Normal Port Maps are fine.
     7. CTRL+b+d
 ## Getting access to the ai club machine from your network
     1. ssh $STD_HOST_CONFIG ( ssh into your vps )
-    2. ssh -p 6000 root@localhost  
+    2. ssh -p $VPS_DOCKER_INT_PORT root@localhost  
     Voila, you're good to go.
 ## Setting up jupyter lab to proxy to your VPS's port 8000
     # Presumably you've run ( jupyter lab --no-browser --allow-root --ip=0.0.0.0 --port=8888 ) in a tmux session in the aiclub docker container
     0. tmux
-    1. ssh -L 8000:localhost:8888 -p 6000 root@localhost
+    1. ssh -L 8000:localhost:8888 -p $VPS_DOCKER_INT_PORT root@localhost
     2. CTRL+b+d
     3. # exit from your ssh session
     4. ssh -L 8080:localhost:8000 $STD_HOST_CONFIG
