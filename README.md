@@ -35,8 +35,9 @@ You need to preconfigure a vps with a static ip ( azure provides one. aws doesn'
             - cd $WORK_DIR_T
             - git clone --single-branch --depth 1 https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/webtunnel.git
             - cd webtunnel/main/client 
-            - WEBTUNNEL_VERSION = 3b6faa48163782c1e5420bcb4b068cd38c401ea7
-            - git reset --hard ${WEBTUNNEL_VERSION} && go build -ldflags="-s -w" -o /usr/local/bin/webtunnel
+            - # WEBTUNNEL_VERSION = 3b6faa48163782c1e5420bcb4b068cd38c401ea7 
+            - # git reset --hard ${WEBTUNNEL_VERSION} ( May not work )
+            - go build -ldflags="-s -w" -o /usr/local/bin/webtunnel
     5. cd $WORK_DIR_T/tor-expert-bundle/tor
     6. ./tor -f torrc
     7. CTRL+b+d
